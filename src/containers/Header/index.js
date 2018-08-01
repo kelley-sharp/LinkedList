@@ -4,7 +4,9 @@ import { logout } from '../../store/actions/auth';
 
 function mapStateToProps(reduxState) {
   return {
-    currentUser: reduxState.currentUser
+    // currentUser: reduxState.currentUser,
+    displayName: reduxState.currentUser.first_name,
+    profilePic: reduxState.currentUser.photo
   };
 }
 

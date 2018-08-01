@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../Header';
+import Header from '../../containers/Header';
 import './style.css';
 
 export default class Homepage extends Component {
@@ -41,5 +41,7 @@ export default class Homepage extends Component {
 }
 
 Homepage.propTypes = {
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object.isRequired,
+  jobs: PropTypes.array.isRequired,
+  fetchJobsRequest: PropTypes.func.isRequired
 };
