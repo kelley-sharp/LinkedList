@@ -141,7 +141,7 @@ export default class Signup extends Component {
   }
 }
 
-Signup.PropTypes = {
+Signup.propTypes = {
   clearError: PropTypes.func.isRequired,
   authRequest: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired,

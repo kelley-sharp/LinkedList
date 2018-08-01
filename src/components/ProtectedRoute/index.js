@@ -37,5 +37,5 @@ export default class ProtectedRoute extends Component {
 
 ProtectedRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.element.isRequired
+  component: PropTypes.func.isRequired
 };

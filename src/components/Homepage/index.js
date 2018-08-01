@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../containers/Header';
 import './style.css';
+import Card from '../../containers/Card';
 
 export default class Homepage extends Component {
   componentDidMount() {
@@ -16,16 +17,7 @@ export default class Homepage extends Component {
         <h3>Sorry, no jobs are available right now. Please try again later.</h3>
       );
     } else {
-      displayJobs = this.props.jobs.map(job => (
-        <div key={job.id}>
-          <li>
-            {job.title} @{job.company}
-          </li>
-          <li>
-            {job.salary} | {job.equity}
-          </li>
-        </div>
-      ));
+      displayJobs = this.props.jobs.map(job => <Card key={job.id} job={job} />);
     }
 
     return (

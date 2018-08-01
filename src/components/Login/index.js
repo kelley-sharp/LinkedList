@@ -85,7 +85,7 @@ export default class Login extends Component {
   }
 }
 
-Login.PropTypes = {
+Login.propTypes = {
   clearError: PropTypes.func.isRequired,
   authRequest: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired,

@@ -36,5 +36,5 @@ export default class NoAuthRoute extends Component {
 
 NoAuthRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.element.isRequired
+  component: PropTypes.func.isRequired
 };
