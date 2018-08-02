@@ -40,7 +40,9 @@ export default class Homepage extends Component {
         </h3>
       );
     } else {
-      displayList = list.map(i => <Card key={i.id} details={i} />);
+      displayList = list.map(i => (
+        <Card key={i.id} details={i} category={category} />
+      ));
     }
 
     return (
