@@ -4,8 +4,8 @@ import CompanyProfilePlaceholder from '../../images/company_placeholder.png';
 
 export default class Card extends Component {
   render() {
-    const companyPicture = this.props.job.photo
-      ? this.props.job.photo
+    const companyPicture = this.props.details.photo
+      ? this.props.details.photo
       : CompanyProfilePlaceholder;
     // debugger;
     return (
@@ -16,11 +16,11 @@ export default class Card extends Component {
           </div>
           <div className="info">
             <p>
-              {this.props.job.title} <b> @{this.props.job.company}</b>
+              {this.props.details.title} <b> @{this.props.details.company}</b>
             </p>
             <p>
-              {this.props.job.salary} |
-              {this.props.job.equity}%
+              {this.props.details.salary} |
+              {this.props.details.equity}%
             </p>
           </div>
           <div className="action">
@@ -31,3 +31,6 @@ export default class Card extends Component {
     );
   }
 }
+
+// jobs aren't gonna have photos
+// we need 3 new child components for cards

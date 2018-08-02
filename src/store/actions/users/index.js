@@ -1,5 +1,6 @@
 import { callAPI } from '../../../services/api';
 import * as t from '../actionTypes';
+import { updateSearchType } from '../search';
 
 export function createUserRequest(newUserPayload) {
   return async dispatch => {
@@ -29,15 +30,16 @@ function createUserFail(error) {
   };
 }
 
-export function fetchUsersSearchRequest(term) {
+export function fetchUsersRequest(term, searchType = 2) {
   return async dispatch => {
     try {
       // tell everyone we're making the request
-      dispatch({ type: t.FETCH_USERS_SEARCH_REQUEST });
+      dispatch({ type: t.FETCH_USERS_REQUEST });
       // call the API for /users, auth required
       let users = await callAPI('get', `/users?search=${term}`, true);
       // dispatch the success action creator and the users that we got back
       dispatch(fetchUsersSuccess(users));
+      dispatch(updateSearchType(searchType));
     } catch (error) {
       dispatch(fetchUsersFail(error));
       return Promise.reject();
@@ -46,9 +48,9 @@ export function fetchUsersSearchRequest(term) {
 }
 
 export function fetchUsersSuccess(users) {
-  return { type: t.FETCH_USERS_SEARCH_SUCCESS, users };
+  return { type: t.FETCH_USERS_SUCCESS, users };
 }
 
 export function fetchUsersFail(error) {
-  return { type: t.FETCH_USERS_SEARCH_FAIL, error };
+  return { type: t.FETCH_USERS_FAIL, error };
 }

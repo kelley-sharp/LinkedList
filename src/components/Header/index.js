@@ -17,13 +17,19 @@ export default class Header extends Component {
     e.preventDefault();
     switch (this.state.searchCategoryIdx) {
       case 0:
-        // companies;
+        this.props.fetchCompaniesRequest(
+          encodeURI(this.state.searchText, this.state.searchCategoryIdx)
+        );
         break;
       case 1:
-        this.props.fetchJobsSearchRequest(encodeURI(this.state.searchText));
+        this.props.fetchJobsRequest(
+          encodeURI(this.state.searchText, this.state.searchCategoryIdx)
+        );
         break;
       case 2:
-        this.props.fetchUsersSearchRequest(encodeURI(this.state.searchText));
+        this.props.fetchUsersRequest(
+          encodeURI(this.state.searchText, this.state.searchCategoryIdx)
+        );
     }
   };
 
@@ -89,4 +95,4 @@ Header.propTypes = {
   searchCategories: PropTypes.array
 };
 
-// fetchJobsSearchRequest should probably be in propTypes
+// fetchJobsRequest should probably be in propTypes

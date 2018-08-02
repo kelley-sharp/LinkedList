@@ -5,7 +5,10 @@ import { fetchJobsRequest } from '../../store/actions/jobs';
 function mapStateToProps(reduxState) {
   return {
     currentUser: reduxState.currentUser,
-    jobs: reduxState.jobs
+    jobs: reduxState.jobs,
+    users: reduxState.users,
+    companies: reduxState.companies,
+    search: reduxState.search // search.searchType
   };
 }
 
