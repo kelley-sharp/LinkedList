@@ -41,6 +41,12 @@ export default class Header extends Component {
     this.setState({ searchCategoryIdx: idx });
   };
 
+  handleLogout = () => {
+    this.props.logout();
+    console.log('after logout called, before history push');
+    this.props.history.push('/login');
+  };
+
   render() {
     const { searchText, searchCategoryIdx } = this.state;
     const { searchCategories, displayName, profilePic } = this.props;
@@ -78,6 +84,7 @@ export default class Header extends Component {
         <div className="profile-area">
           <img src={profilePic} alt="Profile" />
           <span>{displayName}</span>
+          <button onClick={this.handleLogout}>Logout</button>
         </div>
       </div>
     );

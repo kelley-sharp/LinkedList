@@ -47,7 +47,7 @@ export default class Homepage extends Component {
 
     return (
       <div>
-        <Header />
+        <Header history={this.props.history} />
         <div className="feed">
           <h1>{category}</h1>
           {displayList}
