@@ -15,7 +15,16 @@ export default class Header extends Component {
 
   handleSearch = e => {
     e.preventDefault();
-    // TODO: search
+    switch (this.state.searchCategoryIdx) {
+      case 0:
+        // companies;
+        break;
+      case 1:
+        this.props.fetchJobsSearchRequest(encodeURI(this.state.searchText));
+        break;
+      case 2:
+        this.props.fetchUsersSearchRequest(encodeURI(this.state.searchText));
+    }
   };
 
   handleChange = e => {
@@ -79,3 +88,5 @@ Header.propTypes = {
   displayName: PropTypes.string.isRequired,
   searchCategories: PropTypes.array
 };
+
+// fetchJobsSearchRequest should probably be in propTypes

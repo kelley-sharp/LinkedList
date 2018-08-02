@@ -10,6 +10,11 @@ export default class Homepage extends Component {
   }
 
   render() {
+    // let list
+    // switch idx 0: list = this.WHATEVER.companies
+    // switch idx 2: list = this.WHATEVER.people
+    // list = this.WHATEVER.jobs
+
     const { jobs } = this.props;
     let displayJobs;
     if (jobs.length === 0) {

@@ -34,6 +34,13 @@ export default function errorReducer(state = DEFAULT_STATE, action) {
         title: 'There was a problem loading this user profile.',
         message: action.error.message
       };
+    case t.FETCH_USERS_SEARCH_FAIL:
+      return {
+        ...state,
+        hasError: true,
+        title: 'Unable to load users.',
+        message: action.error.message
+      };
     case t.FETCH_JOBS_FAIL:
       return {
         ...state,
