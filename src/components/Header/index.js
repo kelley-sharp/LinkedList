@@ -43,7 +43,6 @@ export default class Header extends Component {
 
   handleLogout = () => {
     this.props.logout();
-    console.log('after logout called, before history push');
     this.props.history.push('/login');
   };
 
@@ -84,10 +83,10 @@ export default class Header extends Component {
         </form>
 
         <div className="profile-area">
-          {/* <Link to={`/users/${this.reduxState.users[].username}`}> */}
-          <img src={profilePic} alt="Profile" />
-          <span>{displayName}</span>
-          {/* </Link> */}
+          <Link to={`/users/${this.props.username}`}>
+            <img src={profilePic} alt="Profile" />
+            <span>{displayName}</span>
+          </Link>
           <button onClick={this.handleLogout}>Logout</button>
         </div>
       </div>
@@ -103,7 +102,8 @@ Header.defaultProps = {
 Header.propTypes = {
   profilePic: PropTypes.string,
   displayName: PropTypes.string.isRequired,
-  searchCategories: PropTypes.array
+  searchCategories: PropTypes.array,
+  username: PropTypes.string.isRequired
 };
 
 // fetchJobsRequest should probably be in propTypes

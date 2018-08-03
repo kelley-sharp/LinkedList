@@ -99,5 +99,6 @@
 }
 
 .profile-area img {
-  width: 60%;
+  width: auto;
+  height: 50px;
 }

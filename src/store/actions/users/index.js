@@ -30,6 +30,32 @@ function createUserFail(error) {
   };
 }
 
+// FETCH_USER_REQUEST
+export function fetchUserRequest(username) {
+  return async dispatch => {
+    try {
+      // tell everyone we're making the request
+      dispatch({ type: t.FETCH_USER_REQUEST });
+      // call rthe API for /users/:username, auth required
+      let user = await callAPI('get', `/users/${username}`, true);
+      console.log(user);
+      // dispatch the success action creator and the user that we got back
+      dispatch(fetchUserSuccess(user));
+    } catch (error) {
+      dispatch(fetchUserFail(error));
+      return Promise.reject();
+    }
+  };
+}
+
+function fetchUserSuccess(user) {
+  return { type: t.FETCH_USER_SUCCESS, user };
+}
+
+function fetchUserFail(error) {
+  return { type: t.FETCH_USER_FAIL, error };
+}
+
 export function fetchUsersRequest(term, searchType = 2) {
   return async dispatch => {
     try {
@@ -47,6 +73,7 @@ export function fetchUsersRequest(term, searchType = 2) {
   };
 }
 
+// I think following funcs might not need export
 export function fetchUsersSuccess(users) {
   return { type: t.FETCH_USERS_SUCCESS, users };
 }

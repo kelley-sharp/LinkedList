@@ -8,6 +8,10 @@ export default function usersReducer(state = DEFAULT_STATE, action) {
       // expects an array
       return action.users;
     }
+    case t.FETCH_USER_SUCCESS: {
+      // I think this is an object?
+      return action.user;
+    }
     default:
       return state;
   }

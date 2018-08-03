@@ -7,11 +7,19 @@ import { fetchCompaniesRequest } from '../../store/actions/companies';
 // fetchCompanies
 
 function mapStateToProps(reduxState) {
-  return {
-    // currentUser: reduxState.currentUser,
-    displayName: reduxState.currentUser.first_name,
-    profilePic: reduxState.currentUser.photo
-  };
+  if (reduxState.currentUser.photo) {
+    return {
+      // currentUser: reduxState.currentUser,
+      displayName: reduxState.currentUser.first_name,
+      profilePic: reduxState.currentUser.photo,
+      username: reduxState.currentUser.username
+    };
+  } else {
+    return {
+      displayName: reduxState.currentUser.first_name,
+      username: reduxState.currentUser.username
+    };
+  }
 }
 
 export default connect(

@@ -29,8 +29,3 @@ export default class JobCard extends Component {
     );
   }
 }
-
-// jobs aren't gonna have photos
-// we need 3 new child components for cards
-
-//
