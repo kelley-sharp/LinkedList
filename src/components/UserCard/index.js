@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import './style.css';
 import UserProfilePlaceholder from '../../images/user_placeholder.png';
 
-export default class JobCard extends Component {
+export default class UserCard extends Component {
   render() {
     const userPicture = this.props.details.photo
       ? this.props.details.photo

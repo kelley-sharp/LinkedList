@@ -2,6 +2,7 @@ import { callAPI } from '../../../services/api';
 import { setToken, clearToken, getToken } from '../../../services/token';
 import jwtDecode from 'jwt-decode';
 import * as t from '../actionTypes';
+import { fetchCurrentUserRequest } from '../currentUser';
 
 export function authRequest(type, usernameOrHandle, password) {
   return async dispatch => {
@@ -14,6 +15,7 @@ export function authRequest(type, usernameOrHandle, password) {
           password
         });
         dispatch(authSuccess('user', token));
+        dispatch(fetchCurrentUserRequest(usernameOrHandle));
       } catch (error) {
         dispatch(authFail('user', error));
         return Promise.reject();
@@ -42,6 +44,7 @@ export function authFail(type, error) {
 }
 
 export function stayLoggedIn() {
+  // return async dispatch => {
   let token = getToken();
   try {
     let decoded = jwtDecode(token);
@@ -55,6 +58,7 @@ export function stayLoggedIn() {
   } catch (err) {
     return { type: t.NO_TOKEN_FOUND };
   }
+  // };
 }
 
 export function logout() {

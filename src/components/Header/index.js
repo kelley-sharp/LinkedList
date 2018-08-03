@@ -50,6 +50,7 @@ export default class Header extends Component {
   render() {
     const { searchText, searchCategoryIdx } = this.state;
     const { searchCategories, displayName, profilePic } = this.props;
+    // debugger;
     return (
       <div className="Header">
         <Link to="/" className="Header-logo">
@@ -81,9 +82,12 @@ export default class Header extends Component {
           </div>
           <input type="submit" value="Search" className="search-btn" />
         </form>
+
         <div className="profile-area">
+          {/* <Link to={`/users/${this.reduxState.users[].username}`}> */}
           <img src={profilePic} alt="Profile" />
           <span>{displayName}</span>
+          {/* </Link> */}
           <button onClick={this.handleLogout}>Logout</button>
         </div>
       </div>

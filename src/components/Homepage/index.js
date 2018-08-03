@@ -5,12 +5,18 @@ import './style.css';
 import Card from '../../containers/Card';
 
 export default class Homepage extends Component {
-  componentDidMount() {
-    this.props.fetchJobsRequest();
+  state = { loading: true };
+
+  async componentDidMount() {
+    await this.props.fetchJobsRequest();
+    await this.props.fetchCurrentUserRequest(this.props.currentUser.username);
+    this.setState({ loading: false });
   }
 
   render() {
-    console.log(this.props.search);
+    if (this.state.loading) {
+      <h1>Loading...</h1>;
+    }
     let list = this.props.jobs;
     let category = 'Jobs';
     switch (this.props.search) {
